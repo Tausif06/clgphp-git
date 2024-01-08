@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(235, 241, 241);
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(95, 9, 9, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .login-container button {
+            background-color: #011001;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .alert-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+    <title>Login - Maharashtra Automobile</title>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="return showAlert()">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="\d{10}" title="Please enter a 10-digit phone number" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+    </div>
+
+    <!-- Verified Customer Alert -->
+    <div class="alert-container" id="verified-alert" style="display: none;">
+        <p>Verified Customer! Welcome back!</p>
+    </div>
+
+    <script>
+        function showAlert() {
+            // Assuming some logic to check if the customer is verified
+            // For demonstration purposes, let's assume a successful login means the customer is verified
+            var isCustomerVerified = true;
+
+            // Validate the phone number format (10 digits)
+            var phoneNumberInput = document.getElementById('phone');
+            if (!/^\d{10}$/.test(phoneNumberInput.value)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return false;
+            }
+
+            if (isCustomerVerified) {
+                // Show the alert
+                document.getElementById('verified-alert').style.display = 'block';
+
+                // Redirect to the home page after a short delay (for demonstration purposes)
+                setTimeout(function() {
+                    window.location.href = "index.php"; // Replace with your actual home page URL
+                }, 3000); // 3000 milliseconds (3 seconds) delay before redirecting
+            }
+
+            // Return false to prevent the form from submitting
+            return false;
+        }
+    </script>
+</body>
+</html>
